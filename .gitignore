@@ -1,0 +1,6 @@
+.idea
+caches/**
+static/**
+media/**
+**/__pycache__
+**/migrations/**
