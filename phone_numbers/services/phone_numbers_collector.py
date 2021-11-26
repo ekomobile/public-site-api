@@ -20,8 +20,11 @@ class DealersAPI:
 
     @staticmethod
     def __get_current_token():
-        with open(CACHE_DIR.joinpath('dealers_api_token.txt'), 'r') as cached_token:
-            return cached_token.read()
+        try:
+            with open(CACHE_DIR.joinpath('dealers_api_token.txt'), 'r') as cached_token:
+                return cached_token.read()
+        except FileNotFoundError:
+            return None
 
     def __get_new_token(self) -> None:
         auth_request: requests = requests.get(
