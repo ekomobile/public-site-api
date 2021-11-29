@@ -124,12 +124,12 @@ class PhoneNumbersFilter:
                 validity = True
 
             if validity:
-                filtered_list.append(json.dumps({
+                filtered_list.append({
                     'abc_ctn': number['city_number'],
                     'def_ctn': number['number'],
                     'type': number['fed_city'],
                     'price': int(float(number['price']))
-                }))
+                })
         return filtered_list
 
     def get_filtered_phone_numbers_list(self, raw_phone_numbers_list: List[any]):
