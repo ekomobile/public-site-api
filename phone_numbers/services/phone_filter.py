@@ -48,7 +48,7 @@ class PhoneNumbersFilter:
         return True
 
     def __validate_number_by_target_mask(self, number) -> bool:
-        number = str(number)[3:]
+        number = str(number)
         if self.__phone_number_mask.__len__() == 0:
             return True
         target_chars_list = []
