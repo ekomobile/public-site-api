@@ -107,15 +107,6 @@ class PhoneNumbersFilter:
             else:
                 num = number['city_number']
 
-            # Category validity check
-            if self.__category.__len__() == 0:
-                pass
-            else:
-                if int(float(number['price'])) in self.__category:
-                    pass
-                else:
-                    continue
-
             if self.__validate_include_numbers(num) and self.__validate_exclude_numbers(num) and \
                     self.__validate_number_by_point_values(num) and self.__validate_number_by_target_mask(num):
                 validity = True
