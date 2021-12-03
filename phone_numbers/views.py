@@ -13,7 +13,6 @@ class PhoneNumbersListView(APIView):
         exclude_numbers: List[str] = request.GET.getlist('exclude_numbers', [])
         phone_number_mask: List[any] = request.GET.get('phone_number_mask', '')
         phone_number_mask_strict: bool = request.GET.get('phone_number_mask_strict', False)
-        print(phone_number_mask)
 
         include_numbers_n = []
         for number in include_numbers:
