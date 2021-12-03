@@ -1,7 +1,6 @@
 from config.settings import CACHE_DIR
 import requests
-from typing import Optional, List, Dict
-import json
+from typing import Optional
 import os
 
 

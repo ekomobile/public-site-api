@@ -1,17 +1,14 @@
 from typing import List, Tuple, Pattern
-import json
 import re
 
 
 class PhoneNumbersFilter:
-    def __init__(self, phone_type: int, mobile_operator: int, category: List[int], include_numbers: List[int],
-                 exclude_numbers: List[int], point_values: str, phone_number_mask: str, phone_number_mask_strict: bool):
+    def __init__(self, phone_type: int, mobile_operator: int, include_numbers: List[int],
+                 exclude_numbers: List[int], phone_number_mask: str, phone_number_mask_strict: bool):
         self.__phone_type: int = phone_type
         self.__mobile_operator: int = mobile_operator
-        self.__category: List[int] = category
         self.__include_numbers: List[int] = include_numbers
         self.__exclude_numbers:  List[int] = exclude_numbers
-        self.__point_values: str = point_values
         self.__phone_number_mask: str = phone_number_mask
         self.__phone_number_mask_strict: bool = phone_number_mask_strict
 
@@ -19,7 +16,7 @@ class PhoneNumbersFilter:
         pattern: Pattern[str] = re.compile(r'^\d$')
         target_point_values: List[Tuple[str, int]] = []
         i: int = 0
-        for char in self.__point_values:
+        for char in self.__phone_number_mask:
             if re.match(pattern, char):
                 target_point_values.append((str(char), i))
             i += 1
