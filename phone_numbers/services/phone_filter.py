@@ -4,12 +4,12 @@ import re
 
 class PhoneNumbersFilter:
     def __init__(self, phone_type: int, mobile_operator: int, include_numbers: List[int],
-                 exclude_numbers: List[int], phone_number_mask: str, phone_number_mask_strict: bool):
+                 exclude_numbers: List[int], phone_number_mask: List[any], phone_number_mask_strict: bool):
         self.__phone_type: int = phone_type
         self.__mobile_operator: int = mobile_operator
         self.__include_numbers: List[int] = include_numbers
         self.__exclude_numbers:  List[int] = exclude_numbers
-        self.__phone_number_mask: str = phone_number_mask
+        self.__phone_number_mask: List[any] = phone_number_mask
         self.__phone_number_mask_strict: bool = phone_number_mask_strict
 
     def __get_point_values_pattern(self) -> List[Tuple[str, int]]:

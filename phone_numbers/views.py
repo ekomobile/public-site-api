@@ -11,8 +11,9 @@ class PhoneNumbersListView(APIView):
         mobile_operator: int = int(request.GET.get('mobile_operator', 1))
         include_numbers: List[str] = request.GET.getlist('include_numbers', [])
         exclude_numbers: List[str] = request.GET.getlist('exclude_numbers', [])
-        phone_number_mask: str = request.GET.getlist('phone_number_mask', '')
+        phone_number_mask: List[any] = request.GET.get('phone_number_mask', '')
         phone_number_mask_strict: bool = request.GET.get('phone_number_mask_strict', False)
+        print(phone_number_mask)
 
         include_numbers_n = []
         for number in include_numbers:
@@ -23,9 +24,8 @@ class PhoneNumbersListView(APIView):
             exclude_numbers_n.append(int(number))
 
         raw_phone_numbers_list = DealersAPI().get_phone_numbers_list()
-        filtered_list = PhoneNumbersFilter(phone_type, mobile_operator, include_numbers_n,
-                                           exclude_numbers_n, phone_number_mask,
-                                           phone_number_mask_strict)\
+        filtered_list = PhoneNumbersFilter(phone_type, mobile_operator, include_numbers_n, exclude_numbers_n,
+                                           phone_number_mask,phone_number_mask_strict)\
             .get_filtered_phone_numbers_list(raw_phone_numbers_list)
         return Response(filtered_list, status=200)
 
